@@ -5,21 +5,35 @@ using UnityEngine.InputSystem;
 public class Player : MonoBehaviour
 {
     [SerializeField]
+    private PlayerInput playerInput;
+    [SerializeField]
     private Movement movement;
+    [SerializeField]
+    private Arsenal arsenal;
 
-    private InputAction moveAction;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        moveAction = InputSystem.actions.FindAction("Move");
+        DisableProjectWideInput();
     }
 
-    // Update is called once per framea
-    void Update()
+    void OnMove(InputValue value)
     {
-        Vector2 bufVec = moveAction.ReadValue<Vector2>();
+        Vector2 bufVec = value.Get<Vector2>();
 
-        movement.Move(new Vector3(bufVec.x, 0, bufVec.y));
+        movement.ChangeMoveDirection(new Vector3(bufVec.x, 0, bufVec.y));
+    }
+
+    void OnMouseWheelScroll(InputValue value)
+    {
+        float direction = value.Get<Vector2>().y;
+
+        if (direction > 0) arsenal.ChangeWeapon(true);
+        else if (direction < 0) arsenal.ChangeWeapon(false);
+    }
+
+    void DisableProjectWideInput()
+    {
+        InputSystem.actions.Disable();
+        playerInput.currentActionMap?.Enable();
     }
 }
