@@ -4,9 +4,10 @@ public class Movement : MonoBehaviour
 {
     [SerializeField]
     protected float speedMultiplier = 1f;
-    [SerializeField]
+
     protected Vector3 currentDirection = Vector3.zero;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    protected Space moveSpace;
+
     void Start()
     {
         
@@ -16,15 +17,16 @@ public class Movement : MonoBehaviour
     {
         if (currentDirection == Vector3.zero) return;
 
-        Move(currentDirection);
+        Move(currentDirection, moveSpace);
     }
 
-    public void ChangeMoveDirection(Vector3 direction)
+    public void ChangeMoveDirection(Vector3 direction, Space moveSpace = Space.World)
     {
         currentDirection = direction;
+        this.moveSpace = moveSpace;
     }
 
-    protected virtual void Move(Vector3 direction)
+    protected virtual void Move(Vector3 direction, Space moveSpace = Space.World)
     {
         Debug.Log("MOVE");
     }

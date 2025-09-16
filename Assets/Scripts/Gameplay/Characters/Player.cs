@@ -1,12 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class Player : MonoBehaviour
+public class Player : Character
 {
     [SerializeField]
     private PlayerInput playerInput;
-    [SerializeField]
-    private Health health;
     [SerializeField]
     private Movement movement;
     [SerializeField]
@@ -14,11 +12,10 @@ public class Player : MonoBehaviour
 
     private bool isShooting = false;
 
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         DisableProjectWideInput();
-
-        health.OnDeath += OnDeath;
     }
 
     private void Update()
@@ -50,11 +47,6 @@ public class Player : MonoBehaviour
 
         if (direction > 0) arsenal.ChangeWeapon(true);
         else if (direction < 0) arsenal.ChangeWeapon(false);
-    }
-
-    void OnDeath()
-    {
-        gameObject.SetActive(false);
     }
 
     void DisableProjectWideInput()
