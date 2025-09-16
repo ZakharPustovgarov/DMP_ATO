@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2980558960821114932}
   - component: {fileID: 4721405629795936227}
   - component: {fileID: 9010651018934058225}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,8 @@ GameObject:
   - component: {fileID: 700541996888646242}
   - component: {fileID: 5362277971791171969}
   - component: {fileID: 5831546334404764019}
-  m_Layer: 0
+  - component: {fileID: 2354268374687833819}
+  m_Layer: 7
   m_Name: EnemySmall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -160,8 +161,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   health: {fileID: 5362277971791171969}
   movement: {fileID: 5831546334404764019}
-  rotationMultiplier: 100
+  rotationMultiplier: 150
   target: {fileID: 0}
+  damage: 1
 --- !u!114 &5362277971791171969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -188,3 +190,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TranslateMovement
   speedMultiplier: 2
+--- !u!54 &2354268374687833819
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6005932117656342226}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 0
+  m_ImplicitTensor: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

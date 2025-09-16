@@ -11,21 +11,17 @@ public class Bullet : MonoBehaviour
 
     protected void OnCollisionEnter(Collision collision)
     {
-        HandleCollision(collision.gameObject);
-    }
+        Debug.Log("Entered collsion with " + collision.gameObject.name);
+        Character character = collision.gameObject.GetComponent<Character>();
+        if (character != null)
+        {
+            character.TakeDamage(damage);
+        }
 
-    protected virtual void HandleCollision(GameObject hitObject)
-    {
-        
-        //Enemy enemy = hitObject.GetComponent<Enemy>();
-        //if (enemy != null)
-        //{
-        //    enemy.TakeDamage(damage);
-        //}
-
-        //// Создаем эффект попадания
-        //Instantiate(hitEffect, transform.position, transform.rotation);
+        // эффект попадания
 
         gameObject.SetActive(false);
     }
+
+
 }
